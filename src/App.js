@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Game from './Game';
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+
   const startGame = () => {
-    console.log('Game Started!');
-    // Add logic to start the game here
+    setGameStarted(true);
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to the Game</h1>
-        <button onClick={startGame} className="start-button">
-          Start Game
-        </button>
-      </header>
+      {gameStarted ? (
+        <Game />
+      ) : (
+        <header className="App-header">
+          <h1>Welcome to the Game</h1>
+          <button onClick={startGame} className="start-button">
+            Start Game
+          </button>
+        </header>
+      )}
     </div>
   );
 }
